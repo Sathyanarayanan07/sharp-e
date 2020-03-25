@@ -1,0 +1,25 @@
+<div class="form-wrapper">
+    <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+        <div class="form-group">
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" formControlName="user_email">
+            <div *ngIf="user_email.touched && user_email.invalid">
+                <div *ngIf="user_email.errors.email" class="alert alert-danger">
+                    Email address is invalid
+                </div>
+                <div *ngIf="user_email.errors.required" class="alert alert-danger">
+                    Email address is required
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="pwd" formControlName="user_password">
+            <div *ngIf="user_password.touched && user_password.invalid" class="alert alert-danger">Password is required</div>
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox"> Remember me</label>
+        </div>
+        <button type="submit" class="btn btn-default" [disabled]="!loginForm.valid">Submit</button>
+    </form>
+</div>

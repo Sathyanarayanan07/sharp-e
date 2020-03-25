@@ -1,0 +1,29 @@
+<!-- Nav Bar Template -->
+<nav class="navbar navbar-expand-lg navbar-light custom-nav-bar">
+    <a class="navbar-brand nav-text custom-nav-text-special" routerLink=''>Sharp-E</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active custom-nav-text" routerLink='/products'>Products <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link custom-nav-text">Features</a>
+      </div>
+      <span class="ml-auto">
+        <a class="nav-item nav-link custom-nav-text" (click)="openModal(template)">Login / Register</a>
+      </span>
+    </div>
+  </nav>
+<!-- Modal Template -->
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Modal</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <tech-sharp-login-form></tech-sharp-login-form>
+    </div>
+  </ng-template>

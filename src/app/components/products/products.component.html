@@ -1,0 +1,14 @@
+<div class="wrap">
+    <div class="block" *ngFor="let item of products | paginate: { itemsPerPage: 12, currentPage: p }">
+        <img src="http://www.cagbd.org/assets/img/Vision.jpg" alt="Image not found" class="custom-product-image">
+        <div class="custom-text-block">
+            <h4 class="custom-heading">Title</h4>
+            <h6 class="custom-sub-heading">Genre</h6>
+        </div> 
+    </div>
+</div>
+<div class="custom-pagination-block">
+    <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
+</div>
+
+

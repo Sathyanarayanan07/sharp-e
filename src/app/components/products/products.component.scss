@@ -1,0 +1,57 @@
+.wrap
+{
+  width:1200px;
+  flex-flow:row wrap;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4%;
+}
+.block
+{
+  width: 250px;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top:15px;
+  margin-bottom:15px; 
+  text-align: center;
+}
+.custom-product-image {
+  width: 210px;
+  height: 210px;
+}
+
+.custom-sub-heading {
+  color: azure;
+}
+
+.custom-heading {
+  color: #f91555;
+}
+
+.custom-text-block {
+  margin-left:20px;
+  margin-top:5px;
+  text-align:left;
+}
+
+.custom-pagination-block {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.my-pagination ::ng-deep .ngx-pagination {
+  margin-bottom: 0px;
+}
+.my-pagination ::ng-deep .ngx-pagination .current {
+  background: #f91555;
+}
+
+.my-pagination ::ng-deep .ngx-pagination a:hover {
+  background: #f91555;
+}
+
+.my-pagination ::ng-deep .ngx-pagination a, .ngx-pagination button{
+  color: azure;
+}
