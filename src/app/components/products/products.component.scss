@@ -15,10 +15,21 @@
   margin-top:15px;
   margin-bottom:15px; 
   text-align: center;
+  cursor: pointer;
 }
 .custom-product-image {
   width: 210px;
-  height: 210px;
+  height: 260px;
+  border: 6px solid azure;
+  border-radius: 5px;
+}
+
+.custom-product-spinner {
+  width: 210px;
+  height: 260px;
+  padding: 70px 53px;
+  border: 6px solid azure;
+  border-radius: 5px;
 }
 
 .custom-sub-heading {
@@ -27,11 +38,12 @@
 
 .custom-heading {
   color: #f91555;
+  font-size: 18px;
 }
 
 .custom-text-block {
   margin-left:20px;
-  margin-top:5px;
+  margin-top:15px;
   text-align:left;
 }
 

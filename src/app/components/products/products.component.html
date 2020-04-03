@@ -1,9 +1,10 @@
 <div class="wrap">
-    <div class="block" *ngFor="let item of products | paginate: { itemsPerPage: 12, currentPage: p }">
-        <img src="http://www.cagbd.org/assets/img/Vision.jpg" alt="Image not found" class="custom-product-image">
+    <div class="block" *ngFor="let item of products | paginate: { itemsPerPage: 12, currentPage: p }" (click)="productItemClicked(item)">
+        <img [hidden]="!imageLoader" class="custom-product-spinner" src="../../../assets//spinners//image.gif" />
+        <img [hidden]="imageLoader" [src]="item.game_thumbnail" alt="Image not found" (load)="this.imageLoader = false;"  class="custom-product-image">
         <div class="custom-text-block">
-            <h4 class="custom-heading">Title</h4>
-            <h6 class="custom-sub-heading">Genre</h6>
+            <h5 class="custom-heading">{{item.game_name}}</h5>
+            <h6 class="custom-sub-heading">{{item.game_genre}}</h6>
         </div> 
     </div>
 </div>

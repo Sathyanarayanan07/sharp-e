@@ -2,3 +2,12 @@
 {
     margin: 30px;
 }
+
+.custom-submit-button {
+    background:#f91555 ;
+    color:azure;
+}
+
+.custom-login-form-alert-margin-top ::ng-deep .alert-danger{
+    margin-top: 15px;
+}

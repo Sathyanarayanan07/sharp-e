@@ -5,10 +5,13 @@ import { ProductsComponent } from './components/products/products.component';
 import { ProductComponent } from './components/product/product.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ProductSpecificationComponent } from './components/product-specification/product-specification.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch:'full'  },
+  { path: '', component: HomeComponent},
   { path: 'home', component: HomeComponent },
+  { path: 'admin', component: AdminPageComponent, canActivate: [AuthGuard] },
   { path: 'products', component: ProductsComponent },
   { path: 'product/:id', component: ProductComponent,
     children: [

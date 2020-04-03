@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { GamesService } from 'src/app/services/games.service';
 
 @Component({
   selector: 'app-product',
@@ -8,11 +9,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductComponent implements OnInit {
 
-  constructor(private route : ActivatedRoute) { }
+  constructor(private route : ActivatedRoute, private gameService: GamesService) { }
 
+  gameData;
+  rate;
   ngOnInit(): void {
-    this.route.paramMap.subscribe((data)=>{
-      console.log(data.get('id'))
+    this.route.paramMap.subscribe((routeData)=>{
+      this.gameService.getGame(routeData.get('id')).subscribe((gameData)=>{
+        this.gameData = gameData;
+        this.rate = this.gameData.game_sharp_rating;
+      })
+
     })
   }
 

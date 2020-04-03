@@ -2,7 +2,7 @@
     box-sizing: border-box;
   }
 
-  form {
+  .custom-search-form-wrapper {
     width: 700px;
     margin-left: auto;
     margin-right: auto;
@@ -40,4 +40,27 @@
     content: "";
     clear: both;
     display: table;
+  }
+
+  .custom-search-list {
+    background: #f1f1f1;
+    list-style-type: none;
+    position: absolute;
+    width: 700px;
+    padding-left: 0px;
+  }
+  .custom-search-list li
+  {
+    padding: 5px 0px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  .custom-search-list li:hover
+  {
+    background: #f91555;
+  }
+
+  .search-thumbnail {
+    height: 70px;
+    width: 70px;
   }

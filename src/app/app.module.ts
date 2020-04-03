@@ -14,10 +14,14 @@ import { ProductSpecificationComponent } from './components/product-specificatio
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HttpParams } from '@angular/common/http'
 import { UsersServiceService } from './services/users-service.service';
 import { SearchBoxComponent } from './components/search-box/search-box.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AuthGuard } from './services/auth-guard.service';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { RatingModule } from 'ngx-bootstrap/rating';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ProductSpecificationComponent,
     LoginFormComponent,
     NavBarComponent,
-    SearchBoxComponent
+    SearchBoxComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,
@@ -40,13 +45,16 @@ import {NgxPaginationModule} from 'ngx-pagination';
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
     CarouselModule.forRoot(),
-    ModalModule.forRoot(), 
+    ModalModule.forRoot(),
+    AlertModule.forRoot(), 
+    RatingModule.forRoot(),
     ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule
   ],
   providers: [
-    UsersServiceService
+    UsersServiceService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

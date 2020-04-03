@@ -1,4 +1,14 @@
-<form class="custom-search-form">
-    <input type="text" placeholder="Search.." name="search">
+<div class="custom-search-form-wrapper">
+<form class="custom-search-form" (ngSubmit)="searchSubmit(inputValue.value)">
+    <input type="text" #inputValue autocomplete="off" placeholder="Search.." name="search" (input)="onSearchChange($event.target.value)" (blur)="onBlur()">
     <button type="submit">Search</button>
   </form>
+  <div>
+  <ul class="custom-search-list" *ngIf="showSuggestion">
+    <li *ngFor="let item of suggestions" (mousedown)="onClickListItem(item)">
+      <img [src]="item.game_thumbnail" class="search-thumbnail">
+      {{item.game_name}}
+    </li>
+  </ul>
+</div>
+</div>

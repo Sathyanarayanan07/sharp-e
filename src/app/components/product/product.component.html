@@ -1,2 +1,12 @@
-<p>product works!</p>
-<router-outlet></router-outlet>
+<div class="custom-row">
+    <div class="column-1">
+        <img class="custom-product-image" [src]="gameData?.game_thumbnail" alt="Loading.."> 
+    </div>
+    <div class="column-2">
+        <h1 class="title">{{gameData?.game_name}}</h1>
+        <h4 class="sub-title">{{gameData?.game_genre}}</h4>
+        <rating class="custom-rating-star" [(ngModel)]="rate" max="5" readonly="true"></rating>
+        <h4 class="azure-color">{{gameData?.game_overview}}</h4>
+        <h4 class="decsription azure-color">{{gameData?.game_descriptiom}}</h4>
+    </div>
+</div>

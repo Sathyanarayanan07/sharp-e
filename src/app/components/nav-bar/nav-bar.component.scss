@@ -4,10 +4,12 @@
 
 .custom-nav-text {
     color: azure !important;
+    cursor: pointer;
+    font-family: Century Gothic;
 }
 
 .custom-nav-text-special {
-    color: #f91555;
+    color: #f91555 !important;
     font-family: Century Gothic;
 }
 
@@ -17,4 +19,14 @@
 
 .custom-nav-text:hover {
     color: #f91555 !important;
+}
+
+.modal-header {
+    background:#f91555 ;
+    color:azure;
+}
+
+.custom-submit-button {
+    background:#f91555 ;
+    color:azure;
 }

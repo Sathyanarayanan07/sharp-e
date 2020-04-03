@@ -1,0 +1,50 @@
+.custom-product-image {
+    width: 260px;
+    height: 400px;
+    border: 6px solid azure;
+    border-radius: 5px;
+  }
+
+  .column-1{
+    float: left;
+    width: 25%;
+  }
+
+  .column-2 {
+    width: 75%;
+  }
+
+  .custom-row {
+      margin-top: 3%;
+  }
+
+  .decsription {
+      margin-top: 5%;
+  }
+
+  .custom-row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .title {
+    color: #f91555; 
+    font-family: Century Gothic;
+  }
+
+  .sub-title {
+      color: azure;
+      font-family: Century Gothic;
+  }
+
+  .custom-rating-star ::ng-deep span .bs-rating-star{
+    color:azure;
+  }
+
+  .custom-rating-star ::ng-deep span .active{
+    color:#f91555;
+  }
+  .azure-color {
+      color: azure;
+  }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GamesService } from 'src/app/services/games.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'sharp-products',
@@ -7,12 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
   p: number = 1;
-  products = [
-    1,2,3,4,5,6,7,8,9,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-  ]
-  constructor() { }
+  products;
+  imageLoader = true;
+  constructor(private gameService : GamesService,private route: Router,private activatedRoute : ActivatedRoute) { }
+
+  productItemClicked(product) {
+    this.route.navigate(['/product/',product._id])
+  }
 
   ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe((data)=> {
+      if((!data) || !(data.game_name)) {
+        this.gameService.getAllGames().subscribe((gameData)=>{
+          this.products = gameData;
+        })
+      }
+      else {
+        this.gameService.searchGame(data.game_name).subscribe((gameData:[]) =>{
+          if(gameData.length) {  
+            this.products = gameData;
+          }
+          else {
+            this.products = [];
+          }
+        },error=>console.log(error));
+      }
+    })
   }
 
 }

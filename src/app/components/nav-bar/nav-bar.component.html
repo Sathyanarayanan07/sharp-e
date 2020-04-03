@@ -7,11 +7,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link active custom-nav-text" routerLink='/products'>Products <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link custom-nav-text">Features</a>
+        <a class="nav-item nav-link active custom-nav-text" routerLink='/products'>Games <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link custom-nav-text">About</a>
       </div>
       <span class="ml-auto">
-        <a class="nav-item nav-link custom-nav-text" (click)="openModal(template)">Login / Register</a>
+        <a *ngIf="!tokenExists else noToken" class="nav-item nav-link custom-nav-text" (click)="openModal(template)">Login / Register</a>
+        <ng-template #noToken>
+          <a class="nav-item nav-link custom-nav-text" (click)="logOut()">Log Out</a>
+        </ng-template>
       </span>
     </div>
   </nav>
@@ -24,6 +27,6 @@
       </button>
     </div>
     <div class="modal-body">
-      <tech-sharp-login-form></tech-sharp-login-form>
+      <tech-sharp-login-form (closeModal)="closeModalAfterLogin()"></tech-sharp-login-form>
     </div>
   </ng-template>
