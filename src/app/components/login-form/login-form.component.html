@@ -1,7 +1,7 @@
 <div class="form-wrapper">
     <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
         <div class="form-group">
-            <label for="email">Email address:</label>
+            <label for="email">Email address :</label>
             <input type="email" class="form-control" formControlName="user_email">
             <div *ngIf="user_email.touched && user_email.invalid">
                 <div *ngIf="user_email.errors.email" class="alert alert-danger">
@@ -13,19 +13,22 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="pwd">Password:</label>
+            <label for="pwd">Password :</label>
             <input type="password" class="form-control" id="pwd" formControlName="user_password">
             <div *ngIf="user_password.touched && user_password.invalid" class="alert alert-danger">Password is required</div>
         </div>
         <!-- <div class="checkbox">
             <label><input type="checkbox"> Remember me</label>
         </div> -->
-        <button type="submit" class="btn btn-default custom-submit-button" [disabled]="!loginForm.valid">Submit</button>
+        <button type="submit" class="btn btn-default custom-submit-button" [disabled]="!loginForm.valid">Login</button>
         <alert class="custom-login-form-alert-margin-top" type="danger" *ngIf="loginUnsuccessful">
-            <strong>Invalid Email/Password</strong> 
+            <strong>Invalid Email/Password :</strong> 
         </alert>
-        <alert class="custom-login-form-alert-margin-top" type="danger" *ngIf="initialDataNotLoaded">
-            <strong>Sorry !</strong> Server not ready, please try again Later !
+        <alert class="custom-login-form-alert-margin-top" type="danger" *ngIf="notVerified && (!loginUnsuccessful)">
+            <strong>Please Verify account from email sent</strong> 
         </alert>
+        <div class="sign-up-div">
+        Or <strong class="custom-sign-up" (click)="signUp.emit()">Sign Up</strong>, if you are a new user
+        </div>
     </form>
 </div>

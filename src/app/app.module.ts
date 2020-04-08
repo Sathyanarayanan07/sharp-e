@@ -22,6 +22,8 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { RatingModule } from 'ngx-bootstrap/rating';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { RatingModule } from 'ngx-bootstrap/rating';
     LoginFormComponent,
     NavBarComponent,
     SearchBoxComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    PaginationComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

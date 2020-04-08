@@ -1,4 +1,4 @@
-import { Component, OnInit,TemplateRef, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormBuilder,Validators } from '@angular/forms';
 import { UsersServiceService } from 'src/app/services/users-service.service';
 import { Router } from '@angular/router';
@@ -10,10 +10,13 @@ import { Router } from '@angular/router';
 })
 export class LoginFormComponent implements OnInit {
   users:[]
+  notVerified: boolean;
   constructor(private fb : FormBuilder, private userService: UsersServiceService, private router : Router) {
   }
 
   @Output() closeModal = new EventEmitter();
+  @Output() loginSuccess = new EventEmitter();
+  @Output() signUp = new EventEmitter();
 
   loginForm = this.fb.group({
     user_email : ['',[Validators.required,Validators.email]],
@@ -30,30 +33,31 @@ export class LoginFormComponent implements OnInit {
   get user_password() {
     return this.loginForm.get('user_password');
   }
-  rememberMe;
+  
   loginUnsuccessful = false;
-  initialDataNotLoaded = false;
+
   // Service methods
   submitForm() {
     this.userService.loginUser(this.loginForm.value).subscribe((response:any)=>{
-      if(response && response.token) {
+      if(response.status == 200) {
         localStorage.setItem('token', response.token as string);
+        this.loginSuccess.emit();
         this.closeModal.emit();
         this.router.navigate(['/']);
     }
     },error=>{
-      if(!this.initialDataNotLoaded) {
+      if('status' in error && error.status == 403) {
+        this.notVerified = true;
+        this.loginUnsuccessful = null;
+      }
+      else {
         this.loginUnsuccessful = true;
       }
-
     })
   }
 
   ngOnInit(): void {
-    this.userService.getAllUser().subscribe((response)=>{
-    },error => {
-      this.initialDataNotLoaded = true;
-    })
+
   }
 
 }

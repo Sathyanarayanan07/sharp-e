@@ -1,5 +1,5 @@
 <div class="wrap">
-    <div class="block" *ngFor="let item of products | paginate: { itemsPerPage: 12, currentPage: p }" (click)="productItemClicked(item)">
+    <div class="block" *ngFor="let item of products" (click)="productItemClicked(item)">
         <img [hidden]="!imageLoader" class="custom-product-spinner" src="../../../assets//spinners//image.gif" />
         <img [hidden]="imageLoader" [src]="item.game_thumbnail" alt="Image not found" (load)="this.imageLoader = false;"  class="custom-product-image">
         <div class="custom-text-block">
@@ -8,8 +8,9 @@
         </div> 
     </div>
 </div>
-<div class="custom-pagination-block">
-    <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
+
+<sharp-pagination [hidden]="noResultsFound" [pageNumber]="pageNumber" [limit]="limit" (changePage)="onChangePage($event)" [lastNumber]="lastNumber"></sharp-pagination>
+
+<div *ngIf="noResultsFound" class="no-result-found">
+    Sorry no results found !
 </div>
-
-

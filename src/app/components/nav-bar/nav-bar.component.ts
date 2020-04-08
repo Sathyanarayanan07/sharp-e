@@ -1,6 +1,7 @@
 import { Component, OnInit,TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
+import { UsersServiceService } from 'src/app/services/users-service.service';
 
 @Component({
   selector: 'sharp-nav-bar',
@@ -9,30 +10,23 @@ import { Router } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
   modalRef: BsModalRef;
-  tokenExists;
-  constructor(private modal: BsModalService, private route: Router) {
-
+  signUpForm = false;
+  isUserLoggedIn;
+  constructor(private modal: BsModalService, private route: Router,private userService : UsersServiceService) {
   }
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modal.show(template);
   }
 
-  closeModalAfterLogin() {
-    this.modalRef.hide();
-    this.tokenExists = true;
-  }
-
   logOut() {
-    localStorage.removeItem('token');
-    this.tokenExists = false;
+    this.userService.logOutUser();
+    this.isUserLoggedIn = false;
     this.route.navigate(['/'])
   }
 
   ngOnInit(): void {
-    if(localStorage.getItem('token')) {
-      this.tokenExists = true;
-    }
+      this.isUserLoggedIn = this.userService.isUserLoggedIn();
   }
 
 }

@@ -8,17 +8,15 @@
     color:azure;
 }
 
-.custom-login-form-alert-margin-top ::ng-deep .alert-danger{
-    margin-top: 15px;
-}
-
-.custom-sign-up {
+.custom-register {
     color: #f91555;
-    cursor: pointer;
+    cursor: pointer; 
 }
 
-
-
-.sign-up-div {
+.register-div {
     margin-top: 20px;
+}
+
+.custom-register-alert ::ng-deep .alert{
+    margin-top: 15px;
 }

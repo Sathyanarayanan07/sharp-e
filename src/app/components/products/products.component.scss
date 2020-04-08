@@ -67,3 +67,9 @@
 .my-pagination ::ng-deep .ngx-pagination a, .ngx-pagination button{
   color: azure;
 }
+
+.no-result-found {
+  color: #f91555;
+  text-align: center;
+  font-size: 40px;
+}

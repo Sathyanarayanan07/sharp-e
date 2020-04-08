@@ -11,8 +11,8 @@
         <a class="nav-item nav-link custom-nav-text">About</a>
       </div>
       <span class="ml-auto">
-        <a *ngIf="!tokenExists else noToken" class="nav-item nav-link custom-nav-text" (click)="openModal(template)">Login / Register</a>
-        <ng-template #noToken>
+        <a *ngIf="!isUserLoggedIn else notLoggedIn" class="nav-item nav-link custom-nav-text" (click)="openModal(template)">Login / Register</a>
+        <ng-template #notLoggedIn>
           <a class="nav-item nav-link custom-nav-text" (click)="logOut()">Log Out</a>
         </ng-template>
       </span>
@@ -21,12 +21,14 @@
 <!-- Modal Template -->
   <ng-template #template>
     <div class="modal-header">
-      <h4 class="modal-title pull-left">Modal</h4>
+      <h4 *ngIf="!signUpForm" class="modal-title pull-left">Login</h4>
+      <h4 *ngIf="signUpForm" class="modal-title pull-left">Sign Up</h4>
       <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      <tech-sharp-login-form (closeModal)="closeModalAfterLogin()"></tech-sharp-login-form>
+      <tech-sharp-login-form (closeModal)="modalRef.hide()" (loginSuccess)="isUserLoggedIn = true" (signUp)="signUpForm = true" [hidden]="signUpForm"></tech-sharp-login-form>
+      <sharp-register-form [hidden]="!signUpForm" (login)="signUpForm = false" (closeModal)="modalRef.hide()"></sharp-register-form>
     </div>
   </ng-template>

@@ -12,7 +12,23 @@ export class UsersServiceService {
     return this.http.get(this.baseUrl+'/all')
   }
 
-  loginUser(body) {
-    return this.http.post(this.baseUrl+'/login',body)
+  registerUser(body) {
+    return this.http.post(this.baseUrl+'/register',body,{observe: 'response'});
   }
+
+  loginUser(body) {
+    return this.http.post(this.baseUrl+'/login',body,{observe: 'response'});
+  }
+
+  logOutUser() {
+    localStorage.removeItem('token');
+  }
+
+  isUserLoggedIn() {
+    if(localStorage.getItem('token')) {
+      return true;
+    }
+    return false;
+  }
+
 }

@@ -1,0 +1,18 @@
+.custom-pagination {
+    color: azure;
+    text-align: center;
+    padding: 40px 0px;
+}
+.current-page {
+    background: #f91555;
+    color: azure;
+    padding: 5px;
+    margin: 0px 10px;
+}
+.pagination-numbers {
+    margin: 0px 20px;
+}
+
+.previous-page,.current-page,.next-page,a {
+    cursor: pointer;
+}

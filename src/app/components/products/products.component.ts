@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GamesService } from 'src/app/services/games.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'sharp-products',
@@ -8,33 +9,44 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  p: number = 1;
+  pageNumber = 1;
+  limit = 12;
   products;
   imageLoader = true;
-  constructor(private gameService : GamesService,private route: Router,private activatedRoute : ActivatedRoute) { }
+  noResultsFound = false;
+  lastNumber;
+
+  constructor(
+    private gameService : GamesService,
+    private route: Router,
+    private activatedRoute : ActivatedRoute
+  ) { }
 
   productItemClicked(product) {
     this.route.navigate(['/product/',product._id])
   }
 
-  ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe((data)=> {
-      if((!data) || !(data.game_name)) {
-        this.gameService.getAllGames().subscribe((gameData)=>{
-          this.products = gameData;
+  onChangePage(page) {
+    this.activatedRoute.queryParams.subscribe((data)=>{
+        const filter = Object.assign({},data);
+        filter['pageNumber'] = page;
+        this.gameService.getAllGames(filter).subscribe((games:any)=> {
+          this.products = games.data;
         })
-      }
-      else {
-        this.gameService.searchGame(data.game_name).subscribe((gameData:[]) =>{
-          if(gameData.length) {  
-            this.products = gameData;
-          }
-          else {
-            this.products = [];
-          }
-        },error=>console.log(error));
-      }
     })
   }
+
+  ngOnInit() {
+    this.activatedRoute.queryParams.subscribe((data)=> {
+        this.gameService.getAllGames(data).subscribe((games:any)=>{
+          this.products = games.data;
+          this.lastNumber = games.lastPage;
+          if(!this.products.length) {
+            this.noResultsFound = true;
+          }
+        })
+    })
+  }
+
 
 }

@@ -8,8 +8,9 @@ export class GamesService {
   baseUrl = 'http://localhost:3000/app/game'
   constructor(private http: HttpClient) {}
 
-  getAllGames() {
-    return this.http.get(this.baseUrl+'/all')
+  getAllGames(queryValue = null) {
+    return (queryValue)?this.http.get(this.baseUrl+'/all',{params: queryValue}) :
+      this.http.get(this.baseUrl+'/all')
   }
 
   getGame(id) {
@@ -18,5 +19,9 @@ export class GamesService {
 
   searchGame(queryValue) {
     return this.http.get(this.baseUrl+'/search_term/',{params: { game_name: queryValue}})
+  }
+
+  getCount() {
+    return this.http.get(this.baseUrl+'/count');
   }
 }

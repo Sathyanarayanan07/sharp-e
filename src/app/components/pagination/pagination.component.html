@@ -1,0 +1,15 @@
+<div class="custom-pagination">
+<a (click)="comeBack()">Previous</a>
+<span class="pagination-numbers">
+<span class="previous-page" [hidden]="pageNumber == 1" (click)="comeBack()">
+    {{ previousNumber }}
+</span>    
+<span class="current-page">
+    {{ pageNumber }}
+</span>
+<span class="next-page" [hidden]="pageNumber == lastNumber" (click)="goFront()">
+    {{ nextNumber }}
+</span>
+</span>
+<a (click)="goFront()">Next</a>    
+</div>

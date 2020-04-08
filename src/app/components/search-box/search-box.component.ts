@@ -30,7 +30,6 @@ export class SearchBoxComponent implements OnInit {
   }
 
   searchSubmit(value) {
-    console.log(value)
     this.route.navigate(['/products/'],{ queryParams : { game_name: value } })
   }
 
