@@ -4,12 +4,14 @@
         <img [hidden]="imageLoader" [src]="item.game_thumbnail" alt="Image not found" (load)="this.imageLoader = false;"  class="custom-product-image">
         <div class="custom-text-block">
             <h5 class="custom-heading">{{item.game_name}}</h5>
-            <h6 class="custom-sub-heading">{{item.game_genre}}</h6>
+            <span class="custom-sub-heading" *ngFor="let genre of item.game_genre;let last = last">
+                {{genre.game_genre}}
+                <span *ngIf="!last" class="custom-slash">/</span></span>
         </div> 
     </div>
 </div>
 
-<sharp-pagination [hidden]="noResultsFound" [pageNumber]="pageNumber" [limit]="limit" (changePage)="onChangePage($event)" [lastNumber]="lastNumber"></sharp-pagination>
+<sharp-pagination [hidden]="noResultsFound" [pageNumber]="pageNumber" (changePage)="onChangePage($event)" [lastNumber]="lastNumber"></sharp-pagination>
 
 <div *ngIf="noResultsFound" class="no-result-found">
     Sorry no results found !

@@ -13,6 +13,10 @@ export class GamesService {
       this.http.get(this.baseUrl+'/all')
   }
 
+  getAllGenres() {
+    return this.http.get(this.baseUrl+'/genres');
+  }
+
   getGame(id) {
     return this.http.get(this.baseUrl+'/search/'+id)
   }

@@ -1,24 +1,27 @@
-<div><carousel>
-  <slide class="custom-slide">
-    <img src="../../assets/home-carousel/1.jpg" class="custom-carousel-image">
-    <div class="carousel-caption d-none d-md-block">
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-    </div>
-  </slide>
-  <slide class="custom-slide">
-    <img src="../../assets/home-carousel/2.jpg" class="custom-carousel-image">
-    <div class="carousel-caption d-none d-md-block">
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
-  </slide>
-  <slide class="custom-slide">
-    <img src="../../assets/home-carousel/3.jpg" class="custom-carousel-image">
-    <div class="carousel-caption d-none d-md-block">
-      <h3>Third slide label</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-    </div>
-  </slide>
-</carousel>
+<div>
+  <carousel [itemsPerSlide]="itemsPerSlide"
+  [singleSlideOffset]="singleSlideOffset"
+  [noWrap]="!noWrap"
+  [interval]="false"
+  [startFromIndex]="5"
+  (slideRangeChange)="onSlideRangeChange($event)">
+<slide *ngFor="let slide of products; let index=index">
+<img [src]="slide.image" alt="image slide" style="display: block; width: 100%;">
+<div class="carousel-caption">
+<h4>Slide {{index}}</h4>
 </div>
+</slide>
+</carousel>
+
+<div class="container" [ngStyle]="{'marginTop': '20px'}">
+<div class="checkbox">
+<label>
+<input type="checkbox" [(ngModel)]="noWrap">
+Infinite
+</label>
+</div>
+</div>
+</div>
+
+ 
+<pre class="card card-block card-header">{{slidesChangeMessage}}</pre>

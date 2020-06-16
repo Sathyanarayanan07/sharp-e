@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GamesService } from 'src/app/services/games.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'sharp-products',
@@ -28,7 +27,7 @@ export class ProductsComponent implements OnInit {
 
   onChangePage(page) {
     this.activatedRoute.queryParams.subscribe((data)=>{
-        const filter = Object.assign({},data);
+        const filter = Object.assign({limit : this.limit},data);
         filter['pageNumber'] = page;
         this.gameService.getAllGames(filter).subscribe((games:any)=> {
           this.products = games.data;
@@ -38,7 +37,8 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe((data)=> {
-        this.gameService.getAllGames(data).subscribe((games:any)=>{
+      const filter = Object.assign({limit : this.limit},data);
+        this.gameService.getAllGames(filter).subscribe((games:any)=>{
           this.products = games.data;
           this.lastNumber = games.lastPage;
           if(!this.products.length) {

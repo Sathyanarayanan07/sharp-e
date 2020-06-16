@@ -48,6 +48,7 @@
     position: absolute;
     width: 700px;
     padding-left: 0px;
+    margin-top: 47px;
   }
   .custom-search-list li
   {
@@ -63,4 +64,40 @@
   .search-thumbnail {
     height: 70px;
     width: 70px;
+  }
+
+  .dropdowns-wrapper {
+    text-align: center;
+  }
+  .dropdown-items
+  {
+    margin-right: 16px;
+    margin-left: 16px;
+    margin-top: 30px;
+  }
+
+  .text-dropdown{
+    color: #f91555;
+    font-weight: 700;
+  }
+
+  select option {
+    background: #f1f1f1;
+  }
+
+
+
+  @media (min-width: 600px) and (max-width: 899px) { 
+    .custom-search-form-wrapper {
+        width: 500px;
+    }
+
+    .dropdowns-wrapper {
+      display: inline-flex;
+      margin-top: 15px;
+    }
+
+    .dropdown-items {
+      margin-top: 10px;
+   }
   }

@@ -12,8 +12,8 @@
   width: 250px;
   margin-left: 25px;
   margin-right: 25px;
-  margin-top:15px;
-  margin-bottom:15px; 
+  margin-top:25px;
+  margin-bottom: 35px; 
   text-align: center;
   cursor: pointer;
 }
@@ -34,11 +34,18 @@
 
 .custom-sub-heading {
   color: azure;
+  font-size: 14px;
 }
 
 .custom-heading {
   color: #f91555;
   font-size: 18px;
+  margin-bottom: 0px;
+  width: 210px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: 600;
 }
 
 .custom-text-block {
@@ -72,4 +79,22 @@
   color: #f91555;
   text-align: center;
   font-size: 40px;
+}
+
+.custom-slash {
+  padding: 0px 2px;
+}
+
+@media (min-width: 900px) and (max-width: 1299px) { 
+  .wrap
+  {
+    width:900px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 899px) { 
+  .wrap
+  {
+    width:600px;
+  }
 }

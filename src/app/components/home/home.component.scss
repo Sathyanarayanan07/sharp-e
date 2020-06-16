@@ -9,3 +9,15 @@
     color:azure;
     text-align: center;
 }
+
+@media (min-width: 900px) and (max-width: 1299px) { 
+    .custom-main-title {
+        font-size: 8.5rem;
+    }
+  }
+  
+  @media (min-width: 600px) and (max-width: 899px) { 
+    .custom-main-title {
+        font-size: 7.5rem;
+    }
+  }

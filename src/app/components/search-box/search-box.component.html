@@ -1,14 +1,35 @@
 <div class="custom-search-form-wrapper">
-<form class="custom-search-form" (ngSubmit)="searchSubmit(inputValue.value)">
-    <input type="text" #inputValue autocomplete="off" placeholder="Search.." name="search" (input)="onSearchChange($event.target.value)" (blur)="onBlur()">
+  <form class="custom-search-form" [formGroup]="searchForm" (ngSubmit)="searchSubmit()">
+    <input type="text" autocomplete="off" placeholder="Search a game.." formControlName="game_name" (blur)="onBlur()">
     <button type="submit">Search</button>
+    <ul class="custom-search-list" *ngIf="showSuggestion">
+      <li *ngFor="let item of suggestions" (mousedown)="onClickListItem(item)">
+        <img [src]="item.game_thumbnail" class="search-thumbnail">
+        {{item.game_name}}
+      </li>
+    </ul>
+    <div class="dropdowns-wrapper">
+      <span class="text-dropdown"> Genre 
+      <select formControlName="game_genre" class="dropdown-items">
+        <option value="">Choose Genre</option>
+        <option *ngFor="let genre of genres" [ngValue]="genre._id">{{genre.game_genre}}
+        </option>
+      </select>
+    </span>
+      <span class="text-dropdown"> Year 
+      <select formControlName="game_released_year" class="dropdown-items">
+        <option value="">Choose Year</option>
+        <option *ngFor="let year of years" [ngValue]="year">{{year}}
+        </option>
+      </select>
+    </span>
+      <span class="text-dropdown"> Ratings 
+      <select formControlName="game_sharp_rating" class="dropdown-items">
+        <option value="">Choose Ratings</option>
+        <option *ngFor="let rating of ratings" [ngValue]="rating">{{rating}}
+        </option>
+      </select>
+    </span>
+    </div>
   </form>
-  <div>
-  <ul class="custom-search-list" *ngIf="showSuggestion">
-    <li *ngFor="let item of suggestions" (mousedown)="onClickListItem(item)">
-      <img [src]="item.game_thumbnail" class="search-thumbnail">
-      {{item.game_name}}
-    </li>
-  </ul>
-</div>
 </div>
